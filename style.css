@@ -1,0 +1,396 @@
+
+/* Krāsas un pamatstili */
+:root {
+  --main: hsl(174, 55%, 30%);
+  --dark: #183b3a;
+  --light: #f1f7f5;
+  --accent: #f4c76b;
+  --text: #243333;
+
+  --page-bg: #ffffff;
+  --card-bg: #ffffff;
+  --border-color: #dce6e3;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text);
+  background: var(--page-bg);
+  line-height: 1.6;
+}
+
+h1,
+h2 {
+  line-height: 1.2;
+  max-width: 65ch;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+}
+
+h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+p {
+  max-width: 65ch;
+}
+
+a {
+  color: var(--main);
+
+  &:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+  }
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+
+  &:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+  }
+}
+
+/* Galvene */
+header {
+  color: white;
+  background: linear-gradient(130deg, #183b3a, #278578);
+}
+
+.topbar {
+  max-width: 1100px;
+  margin: auto;
+  padding: 18px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.logo {
+  color: white;
+  font-size: 1.6rem;
+  font-weight: bold;
+  text-decoration: none;
+
+  span {
+    color: var(--accent);
+  }
+}
+
+nav {
+  display: flex;
+  gap: 18px;
+
+  a {
+    color: white;
+    text-decoration: none;
+
+    &:hover {
+      color: var(--accent);
+    }
+  }
+}
+
+#menuBtn {
+  display: none;
+}
+
+/* Gaišās tēmas un galvenā ievada sadaļa */
+.hero {
+  padding: 65px 22px 80px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.hero p:first-child {
+  color: var(--accent);
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.button {
+  display: inline-block;
+  padding: 11px 18px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--accent);
+  color: var(--dark);
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    background: color-mix(in srgb, var(--accent), white 20%);
+  }
+}
+
+/*  tēmas pārslēgšanas pogas stils */
+#themeBtn {
+  padding: 8px 12px;
+  border: 1px solid white;
+  border-radius: 6px;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+
+  &:hover {
+    background: rgb(255 255 255 / 12%);
+  }
+}
+
+/* Sadaļas un filtri */
+main {
+  max-width: 1100px;
+  padding: 20px;
+  margin: auto;
+}
+
+section {
+  padding: 30px 0;
+  scroll-margin-top: 20px;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: end;
+  padding: 18px;
+  background: var(--light);
+  border-radius: 12px;
+}
+
+label {
+  display: grid;
+  gap: 5px;
+  flex: 1 1 180px;
+  font-weight: bold;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 7px;
+  background: var(--card-bg);
+  color: var(--text);
+}
+
+.check {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex: 0 1 auto;
+}
+
+.check input {
+  width: auto;
+}
+
+#count {
+  font-weight: bold;
+}
+
+/* Sludinājumu kartītes */
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: 20px;
+}
+
+.card {
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--card-bg);
+
+  &:hover {
+    border-color: var(--main);
+    box-shadow: 0 5px 18px #183b3a18;
+  }
+
+  img {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+  }
+
+  .content {
+    padding: 16px;
+  }
+
+  h3 {
+    margin-top: 0;
+  }
+
+  .price {
+    color: var(--main);
+    font-size: 1.3rem;
+    font-weight: bold;
+  }
+
+  > .content p + p {
+    margin-top: 8px;
+  }
+}
+
+.status {
+  font-size: 0.9rem;
+  color: var(--main);
+}
+
+/* Forma un tabula */
+form {
+  display: grid;
+  gap: 16px;
+  max-width: 600px;
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+caption {
+  padding: 10px;
+  font-weight: bold;
+}
+
+th,
+td {
+  padding: 12px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+th {
+  background: var(--light);
+}
+
+/* Kājene */
+footer {
+  padding: 25px;
+  text-align: center;
+  background: var(--dark);
+  color: white;
+
+  a {
+    color: var(--accent);
+  }
+}
+
+/* Mobilā izvēlne un šaurs ekrāns */
+@media (max-width: 650px) {
+  .topbar {
+    flex-wrap: wrap;
+  }
+
+  #menuBtn {
+    display: block;
+    padding: 8px 12px;
+    background: transparent;
+    border: 1px solid white;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+  }
+
+  nav {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+
+    &.open {
+      display: flex;
+    }
+  }
+
+  .hero {
+    padding-top: 35px;
+  }
+
+  #themeBtn {
+    font-size: 0.9rem;
+  }
+}
+
+/* tumšās tēmas krāsas */
+body.dark {
+  --page-bg: #172524;
+  --card-bg: #243533;
+  --text: #edf5f2;
+  --light: #2d403d;
+  --border-color: #526560;
+
+  color-scheme: dark;
+}
+
+/*  tumšās tēmas papildu kontrasts */
+body.dark .card .price,
+body.dark .status {
+  color: #8fe0d1;
+}
+
+body.dark input,
+body.dark select,
+body.dark textarea {
+  color-scheme: dark;
+}
+
+body.dark .card:hover {
+  border-color: #8fe0d1;
+}
+
+/*  pievienojamā foto priekšskatījums */
+#imagePreviewBox {
+  margin-top: 12px;
+}
+
+#imagePreviewBox[hidden] {
+  display: none;
+}
+
+#imagePreview {
+  display: block;
+  width: min(100%, 320px);
+  max-height: 240px;
+  object-fit: contain;
+  margin-bottom: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--card-bg);
+}
+
+#removeImage {
+  padding: 8px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background: var(--card-bg);
+  color: var(--text);
+  cursor: pointer;
+}

@@ -1,0 +1,167 @@
+
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Atrodi un publicē sludinājumus vienuviet.">
+  <meta name="author" content="Sludini.lv">
+  <title>Sludini.lv — sludinājumu portāls</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <!-- Galvene un navigācija -->
+  <header>
+    <div class="topbar">
+      <a class="logo" href="#sakums">Sludini<span>.lv</span></a>
+      <button id="themeBtn" type="button"
+        aria-pressed="false">
+  ☾ Tumšā tēma
+</button>
+      <button id="menuBtn" type="button" aria-expanded="false"
+        aria-controls="navLinks">☰ Izvēlne</button>
+      <nav id="navLinks">
+        <a href="#sludinajumi">Sludinājumi</a>
+        <a href="#cenas">Cenas</a>
+        <a href="#pievienot">Pievienot sludinājumu</a>
+      </nav>
+    </div>
+    <div class="hero" id="sakums">
+      <p>Atrodi. Pārdod. Ietaupi.</p>
+      <h1>Viss vajadzīgais vienuviet</h1>
+      <p>Meklē izdevīgus piedāvājumus vai publicē savējo!</p>
+      <a class="button" href="#sludinajumi">Apskatīt sludinājumus</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Sludinājumu meklēšana -->
+    <section id="sludinajumi">
+      <h2>Jaunākie sludinājumi</h2>
+      <p>Atrodi sev piemērotāko piedāvājumu.</p>
+
+      <div class="filters">
+        <label>Meklēt
+          <input id="search" type="search"
+            placeholder="Nosaukums vai apraksts">
+        </label>
+        <label>Kategorija
+          <select id="category">
+            <option value="visas">Visas kategorijas</option>
+            <option value="dzivokli">Dzīvokļi</option>
+            <option value="auto">Automašīnas</option>
+            <option value="elektronika">Elektronika</option>
+            <option value="mebeles">Mēbeles</option>
+          </select>
+        </label>
+        <label>Maksimālā cena (€)
+          <input id="maxPrice" type="number" min="0"
+            placeholder="Piem., 500">
+        </label>
+        <label class="check">
+          <input id="available" type="checkbox">
+          Tikai pieejamie
+        </label>
+        <label>Kārtot
+          <select id="sort">
+            <option value="new">Jaunākie</option>
+            <option value="cheap">Lētākie</option>
+            <option value="expensive">Dārgākie</option>
+            <option value="az">A–Ž</option>
+          </select>
+        </label>
+      </div>
+
+      <p id="count" aria-live="polite"></p>
+      <div id="list" class="list"></div>
+    </section>
+
+    <!-- Cenu tabula -->
+    <section id="cenas">
+      <h2>Publicēšanas cenas</h2>
+      <table>
+        <caption>Sludinājuma ievietošanas cenrādis</caption>
+        <thead>
+          <tr><th>Plāns</th><th>Ilgums</th><th>Cena</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Standarta</td><td>7 dienas</td><td>Bezmaksas</td></tr>
+          <tr><td>Izcelts</td><td>7 dienas</td><td>5 €</td></tr>
+          <tr><td>Premium</td><td>30 dienas</td><td>10 €</td></tr>
+        </tbody>
+      </table>
+      <p><small>* Šīs ir izdomātas cenas mācību projektam.</small></p>
+    </section>
+
+    <!-- Sludinājuma pievienošanas forma -->
+    <section id="pievienot">
+      <h2>Pievieno sludinājumu</h2>
+      <p>Aizpildi formu, lai pievienotu savu piedāvājumu sarakstam.</p>
+
+      <form id="adForm">
+        <label>Sludinājuma nosaukums
+          <input name="title" required minlength="3"
+            maxlength="60" placeholder="Piem., Pārdodu galdu">
+        </label>
+        <label>Kategorija
+          <select name="category" required>
+            <option value="">Izvēlies kategoriju</option>
+            <option value="dzivokli">Dzīvokļi</option>
+            <option value="auto">Automašīnas</option>
+            <option value="elektronika">Elektronika</option>
+            <option value="mebeles">Mēbeles</option>
+          </select>
+        </label>
+        <label>Cena (€)
+          <input name="price" type="number" min="1" required>
+        </label>
+        <label>Apraksts
+          <textarea name="description" required minlength="10"
+            maxlength="300" placeholder="Apraksti savu piedāvājumu"></textarea>
+        </label>
+        <label>Tālrunis
+          <input name="phone" type="tel" required
+            pattern="[0-9+ ()-]{8,20}"
+            placeholder="+371 20000000">
+        </label>
+        
+<label for="adImage">Sludinājuma foto
+    <input type="file" id="adImage" name="adImage" accept="image/*">
+</label>
+
+<div id="imagePreviewBox" hidden>
+    <p>Foto priekšskatījums:</p>
+    <img id="imagePreview" src="" alt="Izvēlētā sludinājuma foto priekšskatījums" width="240">
+    <button type="button" id="removeImage">Noņemt foto</button>
+</div>
+        <button class="button" type="submit">Publicēt sludinājumu</button>
+        <p id="message" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <!-- Papildu informācija -->
+    <section id="info">
+      <h2>Kāpēc izvēlēties Sludini.lv?</h2>
+      <p><strong>Vienkārši</strong> — meklē sludinājumus pēc savām vajadzībām.</p>
+      <p><em>Ātri</em> — atrodi piedāvājumus dažādās kategorijās.</p>
+      <p><mark>Bezmaksas</mark> standarta sludinājuma publicēšana.</p>
+      <p><abbr title="Biežāk uzdotie jautājumi">BUJ</abbr>: pārbaudi sludinājuma informāciju pirms pirkuma.</p>
+      <blockquote>Labs piedāvājums sākas ar vienkāršu meklēšanu.</blockquote>
+      <p>Uzzini vairāk par drošu pirkšanu
+        <a href="https://www.ptac.gov.lv/" target="_blank"
+          rel="noopener noreferrer">Patērētāju tiesību aizsardzības centrā</a>.
+      </p>
+    </section>
+  </main>
+
+  <!-- Lapas kājene -->
+  <footer>
+    <p>© 2026 Sludini.lv — mācību projekts.</p>
+    <address>
+      E-pasts: <a href="mailto:info@sludini.lv">info@sludini.lv</a><br>
+      Tālrunis: <a href="tel:+37120000000">+371 20000000</a>
+    </address>
+  </footer>
+</body>
+</html>
